@@ -4,7 +4,7 @@
 
 ---
 
-![Dashboard](assets/dashboard.gif)
+![Dashboard](assets/README.gif)
 
 ---
 
