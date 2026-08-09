@@ -17,7 +17,7 @@ vim.g.loaded_netrwPlugin = 1
 local opt = vim.opt
 
 opt.number         = true
-opt.relativenumber = true
+opt.relativenumber = false
 opt.cursorline     = true
 opt.termguicolors  = true
 opt.signcolumn     = "yes"
