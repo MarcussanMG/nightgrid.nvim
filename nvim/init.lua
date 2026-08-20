@@ -909,6 +909,54 @@ require("lazy").setup({
         end,
     },
 
+    -- --------------------------------------------------------
+    --  TREESITTER  (required by render-markdown.nvim below)
+    -- --------------------------------------------------------
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = { "markdown", "markdown_inline" },
+                highlight = { enable = true },
+            })
+        end,
+    },
+
+    -- --------------------------------------------------------
+    --  MARKDOWN RENDERING
+    -- --------------------------------------------------------
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        ft = { "markdown" },
+        opts = {},
+    },
+
+    -- --------------------------------------------------------
+    --  TREESITTER  (required by render-markdown.nvim below)
+    -- --------------------------------------------------------
+    {
+        "nvim-treesitter/nvim-treesitter",
+        build = ":TSUpdate",
+        config = function()
+            require("nvim-treesitter.configs").setup({
+                ensure_installed = { "markdown", "markdown_inline" },
+                highlight = { enable = true },
+            })
+        end,
+    },
+
+    -- --------------------------------------------------------
+    --  MARKDOWN RENDERING
+    -- --------------------------------------------------------
+    {
+        "MeanderingProgrammer/render-markdown.nvim",
+        dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
+        ft = { "markdown" },
+        opts = {},
+    },
+
 }, {
     -- Lazy.nvim UI settings
     ui = {
@@ -1038,6 +1086,16 @@ vim.api.nvim_create_autocmd("FileType", {
         vim.opt_local.tabstop    = 4
         vim.opt_local.shiftwidth = 4
         vim.opt_local.expandtab  = true
+    end,
+})
+
+-- Markdown: Space+m+r toggles between rendered and raw view, per buffer
+vim.api.nvim_create_autocmd("FileType", {
+    group    = vim.api.nvim_create_augroup("markdown_render_toggle", { clear = true }),
+    pattern  = "markdown",
+    callback = function(event)
+        vim.keymap.set("n", "<leader>mr", "<cmd>RenderMarkdown buf_toggle<cr>",
+            { buffer = event.buf, desc = "Toggle rendered/raw Markdown view" })
     end,
 })
 

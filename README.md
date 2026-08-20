@@ -61,6 +61,7 @@
 
 | Plugin | Purpose |
 |--------|---------|
+| render-markdown.nvim | Rendered Markdown preview inside the buffer |
 | lazy.nvim | Plugin manager |
 | Telescope | File / text search |
 | nvim-tree | File explorer |
@@ -193,6 +194,12 @@ Space
 |-----|--------|
 | Space t | Floating terminal |
 | Ctrl+t | Toggle terminal |
+
+## Markdown
+
+| Key | Action |
+|-----|--------|
+| Space m r | Toggle rendered / raw view (current buffer) |
 
 ## LSP
 
